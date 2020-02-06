@@ -1,3 +1,4 @@
+extern "C" {
  /*! \brief C interface for the implementation of the elpa_allocate method
  *
  *  \param  none
@@ -221,3 +222,5 @@
  #ifndef OPTIONAL_C_ERROR_ARGUMENT
  void elpa_uninit(int *error);
  #endif
+
+}
