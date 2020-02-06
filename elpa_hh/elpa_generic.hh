@@ -1,4 +1,5 @@
 #pragma once
+#include <complex>
 
 /*! \brief generic C method for elpa_set
  *
@@ -270,12 +271,12 @@ void elpa_cholesky(elpa_t handle, float* a, int* error) {
 }
 
 template<>
-void elpa_cholesky(elpa_t handle, std::complex<double> a, int* error) {
+void elpa_cholesky(elpa_t handle, std::complex<double>* a, int* error) {
   elpa_cholesky_dc(handle, a, error);
 }
 
 template<>
-void elpa_cholesky(elpa_t handle, std::complex<float> a, int* error) {
+void elpa_cholesky(elpa_t handle, std::complex<float>* a, int* error) {
   elpa_cholesky_fc(handle, a, error);
 }
 

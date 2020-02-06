@@ -165,7 +165,7 @@
  int is_already_decomposed, int *error);
  void elpa_hermitian_multiply_d(elpa_t handle, char uplo_a, char uplo_c, int ncb, double *a, double *b, int nrows_b, int ncols_b, double *c, int nrows_c, int ncols_c, int *error);
  // Potential bug: "elpa_hermitian_multiply_df" should have been "elpa_hermitian_multiply_f"
- void elpa_hermitian_multiply_df(elpa_t handle, char uplo_a, char uplo_c, int ncb, float *a, float *b, int nrows_b, int ncols_b, float *c, int nrows_c, int ncols_c, int *error);
+ void elpa_hermitian_multiply_f(elpa_t handle, char uplo_a, char uplo_c, int ncb, float *a, float *b, int nrows_b, int ncols_b, float *c, int nrows_c, int ncols_c, int *error);
  void elpa_hermitian_multiply_dc(elpa_t handle, char uplo_a, char uplo_c, int ncb, std::complex<double> *a, std::complex<double> *b, int nrows_b, int ncols_b, std::complex<double> *c, int nrows_c, int ncols_c, int *error);
  void elpa_hermitian_multiply_fc(elpa_t handle, char uplo_a, char uplo_c, int ncb, std::complex<float> *a, std::complex<float> *b, int nrows_b, int ncols_b, std::complex<float> *c, int nrows_c, int ncols_c, int *error);
  void elpa_cholesky_d(elpa_t handle, double *a, int *error);
