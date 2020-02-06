@@ -11,9 +11,7 @@
  *  \result void
  */
 template<typename T> 
-void elpa_set(elpa_t e, const char* name, const T value, int* error) {
-  assert(false);
-}
+void elpa_set(elpa_t e, const char* name, const T value, int* error) {}
 
 template<> 
 void elpa_set(elpa_t e, const char* name, const int value, int* error) {
