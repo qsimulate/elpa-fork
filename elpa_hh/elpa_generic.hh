@@ -298,21 +298,95 @@ void elpa_cholesky(elpa_t handle, std::complex<float> a, int* error) {
  *  \result void
  */
 template<typename T>
+void elpa_hermitian_multiply(
+  elpa_t handle,
+  char uplo_a,
+  char uplo_c,
+  int ncb,
+  T* a,
+  T* b,
+  int nrows_b,
+  int ncols_b,
+  T* c,
+  int nrows_c,
+  int ncols_c,
+  int* error) {}
 
-#define elpa_hermitian_multiply(handle, uplo_a, uplo_c, ncb, a, b, nrows_b, ncols_b, c, nrows_c, ncols_c, error) _Generic((a), \
-                double*: \
-                  elpa_hermitian_multiply_d, \
-                \
-                float*: \
-                  elpa_hermitian_multiply_f, \
-                \
-                std::complex<double>*: \
-                  elpa_hermitian_multiply_dc, \
-                \
-                std::complex<float>*: \
-                  elpa_hermitian_multiply_fc \
-        )(handle, a, error)
+template<>
+void elpa_hermitian_multiply(
+  elpa_t handle,
+  char uplo_a,
+  char uplo_c,
+  int ncb,
+  double* a,
+  double* b,
+  int nrows_b,
+  int ncols_b,
+  double* c,
+  int nrows_c,
+  int ncols_c,
+  int* error) 
+{
+  elpa_hermitian_multiply_d(handle, uplo_a, uplo_c, ncb, a, b, nrows_b, ncols_b, 
+    c, nrows_c, ncols_c, error);
+}
 
+template<>
+void elpa_hermitian_multiply(
+  elpa_t handle,
+  char uplo_a,
+  char uplo_c,
+  int ncb,
+  float* a,
+  float* b,
+  int nrows_b,
+  int ncols_b,
+  float* c,
+  int nrows_c,
+  int ncols_c,
+  int* error) 
+{
+  elpa_hermitian_multiply_f(handle, uplo_a, uplo_c, ncb, a, b, nrows_b, ncols_b, 
+    c, nrows_c, ncols_c, error);
+}
+
+template<>
+void elpa_hermitian_multiply(
+  elpa_t handle,
+  char uplo_a,
+  char uplo_c,
+  int ncb,
+  std::complex<double>* a,
+  std::complex<double>* b,
+  int nrows_b,
+  int ncols_b,
+  std::complex<double>* c,
+  int nrows_c,
+  int ncols_c,
+  int* error) 
+{
+  elpa_hermitian_multiply_dc(handle, uplo_a, uplo_c, ncb, a, b, nrows_b, ncols_b, 
+    c, nrows_c, ncols_c, error);
+}
+
+template<>
+void elpa_hermitian_multiply(
+  elpa_t handle,
+  char uplo_a,
+  char uplo_c,
+  int ncb,
+  std::complex<float>* a,
+  std::complex<float>* b,
+  int nrows_b,
+  int ncols_b,
+  std::complex<float>* c,
+  int nrows_c,
+  int ncols_c,
+  int* error) 
+{
+  elpa_hermitian_multiply_fc(handle, uplo_a, uplo_c, ncb, a, b, nrows_b, ncols_b, 
+    c, nrows_c, ncols_c, error);
+}
 
 /*! \brief generic C method for elpa_invert_triangular
  *
@@ -323,16 +397,25 @@ template<typename T>
  *  \param  error   on return the error code, which can be queried with elpa_strerr()
  *  \result void
  */
-#define elpa_invert_triangular(handle, a, error) _Generic((a), \
-                double*: \
-                  elpa_invert_trm_d, \
-                \
-                float*: \
-                  elpa_invert_trm_f, \
-                \
-                std::complex<double>*: \
-                  elpa_invert_trm_dc, \
-                \
-                std::complex<float>*: \
-                  elpa_invert_trm_fc \
-        )(handle, a, error)
+template<typename T>
+void elpa_invert_triangular(elpa_t handle, T* a, int* error) {}
+
+template<>
+void elpa_invert_triangular(elpa_t handle, double* a, int* error) {
+  elpa_invert_trm_d(handle, a, error);
+}
+
+template<>
+void elpa_invert_triangular(elpa_t handle, float* a, int* error) {
+  elpa_invert_trm_f(handle, a, error);
+}
+
+template<>
+void elpa_invert_triangular(elpa_t handle, std::complex<double>* a, int* error) {
+  elpa_invert_trm_dc(handle, a, error);
+}
+
+template<>
+void elpa_invert_triangular(elpa_t handle, std::complex<float>* a, int* error) {
+  elpa_invert_trm_fc(handle, a, error);
+}
