@@ -9,13 +9,18 @@
  *  \param  error   on return the error code, which can be queried with elpa_strerr()
  *  \result void
  */
-template<typename T> void elpa_set(elpa_t e, const char* name, const T value, int* error) {
+template<typename T> 
+void elpa_set(elpa_t e, const char* name, const T value, int* error) {
   assert(false);
 }
-template<> void elpa_set(elpa_t e, const char* name, const int value, int* error) {
+
+template<> 
+void elpa_set(elpa_t e, const char* name, const int value, int* error) {
   elpa_set_integer(e, name, value, error);
 }
-template<> void elpa_set(elpa_t e, const char* name, const double value, int* error) {
+
+template<> 
+void elpa_set(elpa_t e, const char* name, const double value, int* error) {
   elpa_set_double(e, name, value, error);
 }
 
@@ -42,7 +47,6 @@ void elpa_get(const elpa_t handle, const char* name, double* value, int* error) 
   elpa_get_double(handle, name, value, error);
 }
 
-
 /*! \brief generic C method for elpa_eigenvectors
  *
  *  \details
@@ -53,20 +57,40 @@ void elpa_get(const elpa_t handle, const char* name, double* value, int* error) 
  *  \param  error   on return the error code, which can be queried with elpa_strerr()
  *  \result void
  */
-template<typename T1, typename T2> void elpa_eigenvectors(const elpa_t handle, T1* a, T2* ev, T1* q, int* error)
-#define elpa_eigenvectors(handle, a, ev, q, error) _Generic((a), \
-                double*: \
-                  elpa_eigenvectors_d, \
-                \
-                float*: \
-                  elpa_eigenvectors_f, \
-                \
-                std::complex<double>*: \
-                  elpa_eigenvectors_dc, \
-                \
-                std::complex<float>*: \
-                  elpa_eigenvectors_fc \
-        )(handle, a, ev, q, error)
+template<typename T1, typename T2> 
+void elpa_eigenvectors(const elpa_t handle, T1* a, T2* ev, T1* q, int* error) {};
+
+template<>
+void elpa_eigenvectors(const elpa_t handle, double* a, double* ev, double* q, int* error) {
+  elpa_eigenvectors_d(handle, a, ev, q, error);
+}
+
+template<>
+void elpa_eigenvectors(const elpa_t handle, float* a, float* ev, float* q, int* error) {
+  elpa_eigenvectors_f(handle, a, ev, q, error);
+}
+
+template<>
+void elpa_eigenvectors(
+  const elpa_t handle, 
+  std::complex<double>* a,
+  double* ev,
+  std::complex<double>* q,
+  int* error) 
+{
+  elpa_eigenvectors_dc(handle, a, ev, q, error);
+}
+
+template<>
+void elpa_eigenvectors(
+  const elpa_t handle,
+  std::complex<float>* a,
+  float* ev,
+  std::complex<float>* q,
+  int* error)
+{
+  elpa_eigenvectors_fc(handle, a, ev, q, error);
+}
 
 /*! \brief generic C method for elpa_skew_eigenvectors
  *
@@ -78,14 +102,18 @@ template<typename T1, typename T2> void elpa_eigenvectors(const elpa_t handle, T
  *  \param  error   on return the error code, which can be queried with elpa_strerr()
  *  \result void
  */
-#define elpa_skew_eigenvectors(handle, a, ev, q, error) _Generic((a), \
-                double*: \
-                  elpa_eigenvectors_d, \
-                \
-                float*: \
-                  elpa_eigenvectors_f, \
-        )(handle, a, ev, q, error)
+template<typename T>
+void elpa_skew_eigenvectors(elpa_t handle, T* a, T* ev, T* q, int* error) {};
 
+template<>
+void elpa_skew_eigenvectors(elpa_t handle, double* a, double* ev, double* q, int* error) {
+  elpa_eigenvectors_d(handle, a, ev, q, error);
+}
+
+template<>
+void elpa_skew_eigenvectors(elpa_t handle, float* a, float* ev, float* q, int* error) {
+  elpa_eigenvectors_f(handle, a, ev, q, error);
+}
 
 
 /*! \brief generic C method for elpa_generalized_eigenvectors
@@ -100,19 +128,67 @@ template<typename T1, typename T2> void elpa_eigenvectors(const elpa_t handle, T
  *  \param  error   on return the error code, which can be queried with elpa_strerr()
  *  \result void
  */
-#define elpa_generalized_eigenvectors(handle, a, b, ev, q, is_already_decomposed, error) _Generic((a), \
-                double*: \
-                  elpa_generalized_eigenvectors_d, \
-                \
-                float*: \
-                  elpa_generalized_eigenvectors_f, \
-                \
-                std::complex<double>*: \
-                  elpa_generalized_eigenvectors_dc, \
-                \
-                std::complex<float>*: \
-                  elpa_generalized_eigenvectors_fc \
-        )(handle, a, b, ev, q, is_already_decomposed, error)
+template<typename T1, typename T2>
+void elpa_generalized_eigenvectors(
+  elpa_t handle, 
+  T1* a,
+  T1* b,
+  T2* ev,
+  T1* q,
+  int is_already_decomposed,
+  int* error) {}
+
+template<>
+void elpa_generalized_eigenvectors(
+  elpa_t handle, 
+  double* a,
+  double* b,
+  double* ev,
+  double* q,
+  int is_already_decomposed,
+  int* error) 
+{
+  elpa_generalized_eigenvectors_d(handle, a, b, ev, q, is_already_decomposed, error);
+}
+
+template<>
+void elpa_generalized_eigenvectors(
+  elpa_t handle, 
+  float* a,
+  float* b,
+  float* ev,
+  float* q,
+  int is_already_decomposed,
+  int* error) 
+{
+  elpa_generalized_eigenvectors_f(handle, a, b, ev, q, is_already_decomposed, error);
+}
+
+template<>
+void elpa_generalized_eigenvectors(
+  elpa_t handle, 
+  std::complex<double>* a,
+  std::complex<double>* b,
+  double* ev,
+  std::complex<double>* q,
+  int is_already_decomposed,
+  int* error) 
+{
+  elpa_generalized_eigenvectors_dc(handle, a, b, ev, q, is_already_decomposed, error);
+}
+
+template<>
+void elpa_generalized_eigenvectors(
+  elpa_t handle, 
+  std::complex<float>* a,
+  std::complex<float>* b,
+  float* ev,
+  std::complex<float>* q,
+  int is_already_decomposed,
+  int* error) 
+{
+  elpa_generalized_eigenvectors_fc(handle, a, b, ev, q, is_already_decomposed, error);
+}
 
 
 /*! \brief generic C method for elpa_eigenvalues
@@ -124,19 +200,29 @@ template<typename T1, typename T2> void elpa_eigenvectors(const elpa_t handle, T
  *  \param  error   on return the error code, which can be queried with elpa_strerr()
  *  \result void
  */
-#define elpa_eigenvalues(handle, a, ev, error) _Generic((a), \
-                double*: \
-                  elpa_eigenvalues_d, \
-                \
-                float*: \
-                  elpa_eigenvalues_f, \
-                \
-                std::complex<double>*: \
-                  elpa_eigenvalues_dc, \
-                \
-                std::complex<float>*: \
-                  elpa_eigenvalues_fc \
-        )(handle, a, ev, error)
+template<typename T1, typename T2>
+void elpa_eigenvalues(elpa_t handle, T1* a, T2* ev, int* error) {}
+
+template<>
+void elpa_eigenvalues(elpa_t handle, double* a, double* ev, int* error) {
+  elpa_eigenvalues_d(handle, a, ev, error);
+}
+
+template<>
+void elpa_eigenvalues(elpa_t handle, float* a, float* ev, int* error) {
+  elpa_eigenvalues_f(handle, a, ev, error);
+}
+
+template<>
+void elpa_eigenvalues(elpa_t handle, std::complex<double>* a, double* ev, int* error) {
+  elpa_eigenvalues_dc(handle, a, ev, error);
+}
+
+template<>
+void elpa_eigenvalues(elpa_t handle, std::complex<float>* a, float* ev, int* error) {
+  elpa_eigenvalues_fc(handle, a, ev, error);
+}
+
 
 /*! \brief generic C method for elpa_skew_eigenvalues
  *
@@ -147,13 +233,18 @@ template<typename T1, typename T2> void elpa_eigenvectors(const elpa_t handle, T
  *  \param  error   on return the error code, which can be queried with elpa_strerr()
  *  \result void
  */
-#define elpa_skew_eigenvalues(handle, a, ev, error) _Generic((a), \
-                double*: \
-                  elpa_eigenvalues_d, \
-                \
-                float*: \
-                  elpa_eigenvalues_f, \
-        )(handle, a, ev, error)
+template<typename T>
+void elpa_skew_eigenvalues(elpa_t handle, T* a, T* ev, int* error) {}
+
+template<>
+void elpa_skew_eigenvalues(elpa_t handle, double* a, double* ev, int* error) {
+  elpa_skew_eigenvalues_d(handle, a, ev, error);
+}
+
+template<>
+void elpa_skew_eigenvalues(elpa_t handle, float* a, float* ev, int* error) {
+  elpa_skew_eigenvalues_f(handle, a, ev, error);
+}
 
 
 /*  \brief generic C method for elpa_cholesky
@@ -165,19 +256,28 @@ template<typename T1, typename T2> void elpa_eigenvectors(const elpa_t handle, T
  *  \param  error   on return the error code, which can be queried with elpa_strerr()
  *  \result void
  */
-#define elpa_cholesky(handle, a, error) _Generic((a), \
-                double*: \
-                  elpa_cholesky_d, \
-                \
-                float*: \
-                  elpa_cholesky_f, \
-                \
-                std::complex<double>*: \
-                  elpa_cholesky_dc, \
-                \
-                std::complex<float>*: \
-                  elpa_cholesky_fc \
-        )(handle, a, error)
+template<typename T>
+void elpa_cholesky(elpa_t handle, T* a, int* error) {}
+
+template<>
+void elpa_cholesky(elpa_t handle, double* a, int* error) {
+  elpa_cholesky_d(handle, a, error);
+}
+
+template<>
+void elpa_cholesky(elpa_t handle, float* a, int* error) {
+  elpa_cholesky_f(handle, a, error);
+}
+
+template<>
+void elpa_cholesky(elpa_t handle, std::complex<double> a, int* error) {
+  elpa_cholesky_dc(handle, a, error);
+}
+
+template<>
+void elpa_cholesky(elpa_t handle, std::complex<float> a, int* error) {
+  elpa_cholesky_fc(handle, a, error);
+}
 
 
 /*! \brief generic C method for elpa_hermitian_multiply
@@ -197,6 +297,8 @@ template<typename T1, typename T2> void elpa_eigenvectors(const elpa_t handle, T
  *  \param  error   on return the error code, which can be queried with elpa_strerr()
  *  \result void
  */
+template<typename T>
+
 #define elpa_hermitian_multiply(handle, uplo_a, uplo_c, ncb, a, b, nrows_b, ncols_b, c, nrows_c, ncols_c, error) _Generic((a), \
                 double*: \
                   elpa_hermitian_multiply_d, \
