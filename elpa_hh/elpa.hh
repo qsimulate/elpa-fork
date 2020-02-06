@@ -1,10 +1,10 @@
-#ifndef ELPA_H
-#define ELPA_H
+#ifndef ELPA_HH
+#define ELPA_HH
 
 #include <climits>
 #include <complex>
 
-#include <elpa/elpa_version.h>
+#include <elpa_hh/elpa_version.hh>
 
 struct elpa_struct;
 typedef struct elpa_struct *elpa_t;
@@ -13,10 +13,10 @@ struct elpa_autotune_struct;
 typedef struct elpa_autotune_struct *elpa_autotune_t;
 
 
-#include <elpa/elpa_constants.h>
-#include <elpa/elpa_generated_c_api.h>
-#include <elpa/elpa_generated.h>
-#include <elpa/elpa_generic.h>
+#include <elpa_hh/elpa_constants.hh>
+#include <elpa_hh/elpa_generated_c_api.hh>
+#include <elpa_hh/elpa_generated.hh>
+#include <elpa_hh/elpa_generic.hh>
 
 const char *elpa_strerr(int elpa_error);
 
