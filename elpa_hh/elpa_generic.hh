@@ -11,16 +11,16 @@
  *  \result void
  */
 template<typename T> 
-void elpa_set(elpa_t e, const char* name, const T value, int* error) {}
+void elpa_set(elpa_t handle, const char* name, T value, int* error) {}
 
 template<> 
-void elpa_set(elpa_t e, const char* name, const int value, int* error) {
-  elpa_set_integer(e, name, value, error);
+void elpa_set(elpa_t handle, const char* name, int value, int* error) {
+  elpa_set_integer(handle, name, value, error);
 }
 
 template<> 
-void elpa_set(elpa_t e, const char* name, const double value, int* error) {
-  elpa_set_double(e, name, value, error);
+void elpa_set(elpa_t handle, const char* name, double value, int* error) {
+  elpa_set_double(handle, name, value, error);
 }
 
 
