@@ -108,11 +108,13 @@ void elpa_skew_eigenvectors(elpa_t handle, T* a, T* ev, T* q, int* error) {};
 
 template<>
 void elpa_skew_eigenvectors(elpa_t handle, double* a, double* ev, double* q, int* error) {
+  // [[Potential bug]]: this probably should have been "elpa_skew_eigenvectors_d"
   elpa_eigenvectors_d(handle, a, ev, q, error);
 }
 
 template<>
 void elpa_skew_eigenvectors(elpa_t handle, float* a, float* ev, float* q, int* error) {
+  // [[Potential bug]]: this probably should have been "elpa_skew_eigenvectors_f"
   elpa_eigenvectors_f(handle, a, ev, q, error);
 }
 
