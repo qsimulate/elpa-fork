@@ -11,7 +11,7 @@
  *  \result void
  */
 template<typename T> 
-void elpa_set(elpa_t handle, const char* name, T value, int* error) {}
+void elpa_set(elpa_t handle, const char* name, T value, int* error) { assert(false); }
 
 template<> 
 void elpa_set(elpa_t handle, const char* name, int value, int* error) {
@@ -34,7 +34,7 @@ void elpa_set(elpa_t handle, const char* name, double value, int* error) {
  *  \result void
  */
 template<typename T> 
-void elpa_get(const elpa_t handle, const char* name, T* value, int* error) {}
+void elpa_get(const elpa_t handle, const char* name, T* value, int* error) { assert(false); }
 
 template<> 
 void elpa_get(const elpa_t handle, const char* name, int* value, int* error) {
@@ -57,7 +57,7 @@ void elpa_get(const elpa_t handle, const char* name, double* value, int* error) 
  *  \result void
  */
 template<typename T1, typename T2> 
-void elpa_eigenvectors(const elpa_t handle, T1* a, T2* ev, T1* q, int* error) {};
+void elpa_eigenvectors(const elpa_t handle, T1* a, T2* ev, T1* q, int* error) { assert(false); }
 
 template<>
 void elpa_eigenvectors(const elpa_t handle, double* a, double* ev, double* q, int* error) {
@@ -102,7 +102,7 @@ void elpa_eigenvectors(
  *  \result void
  */
 template<typename T>
-void elpa_skew_eigenvectors(elpa_t handle, T* a, T* ev, T* q, int* error) {};
+void elpa_skew_eigenvectors(elpa_t handle, T* a, T* ev, T* q, int* error) {assert(false);}
 
 template<>
 void elpa_skew_eigenvectors(elpa_t handle, double* a, double* ev, double* q, int* error) {
@@ -137,7 +137,7 @@ void elpa_generalized_eigenvectors(
   T2* ev,
   T1* q,
   int is_already_decomposed,
-  int* error) {}
+  int* error) { assert(false); }
 
 template<>
 void elpa_generalized_eigenvectors(
@@ -202,7 +202,7 @@ void elpa_generalized_eigenvectors(
  *  \result void
  */
 template<typename T1, typename T2>
-void elpa_eigenvalues(elpa_t handle, T1* a, T2* ev, int* error) {}
+void elpa_eigenvalues(elpa_t handle, T1* a, T2* ev, int* error) { assert(false); }
 
 template<>
 void elpa_eigenvalues(elpa_t handle, double* a, double* ev, int* error) {
@@ -235,7 +235,7 @@ void elpa_eigenvalues(elpa_t handle, std::complex<float>* a, float* ev, int* err
  *  \result void
  */
 template<typename T>
-void elpa_skew_eigenvalues(elpa_t handle, T* a, T* ev, int* error) {}
+void elpa_skew_eigenvalues(elpa_t handle, T* a, T* ev, int* error) { assert(false); }
 
 template<>
 void elpa_skew_eigenvalues(elpa_t handle, double* a, double* ev, int* error) {
@@ -258,7 +258,7 @@ void elpa_skew_eigenvalues(elpa_t handle, float* a, float* ev, int* error) {
  *  \result void
  */
 template<typename T>
-void elpa_cholesky(elpa_t handle, T* a, int* error) {}
+void elpa_cholesky(elpa_t handle, T* a, int* error) { assert(false); }
 
 template<>
 void elpa_cholesky(elpa_t handle, double* a, int* error) {
@@ -311,7 +311,7 @@ void elpa_hermitian_multiply(
   T* c,
   int nrows_c,
   int ncols_c,
-  int* error) {}
+  int* error) { assert(false); }
 
 template<>
 void elpa_hermitian_multiply(
@@ -399,7 +399,7 @@ void elpa_hermitian_multiply(
  *  \result void
  */
 template<typename T>
-void elpa_invert_triangular(elpa_t handle, T* a, int* error) {}
+void elpa_invert_triangular(elpa_t handle, T* a, int* error) { assert(false); }
 
 template<>
 void elpa_invert_triangular(elpa_t handle, double* a, int* error) {
