@@ -1,4 +1,3 @@
-#pragma once
 #include <complex>
 
 /*! \brief generic C method for elpa_set
@@ -11,15 +10,15 @@
  *  \result void
  */
 template<typename T> 
-void elpa_set(elpa_t handle, const char* name, T value, int* error);
+inline void elpa_set(elpa_t handle, const char* name, T value, int* error);
 
 template<> 
-void elpa_set(elpa_t handle, const char* name, int value, int* error) {
+inline void elpa_set(elpa_t handle, const char* name, int value, int* error) {
   elpa_set_integer(handle, name, value, error);
 }
 
 template<> 
-void elpa_set(elpa_t handle, const char* name, double value, int* error) {
+inline void elpa_set(elpa_t handle, const char* name, double value, int* error) {
   elpa_set_double(handle, name, value, error);
 }
 
@@ -34,15 +33,15 @@ void elpa_set(elpa_t handle, const char* name, double value, int* error) {
  *  \result void
  */
 template<typename T> 
-void elpa_get(const elpa_t handle, const char* name, T* value, int* error);
+inline void elpa_get(const elpa_t handle, const char* name, T* value, int* error);
 
 template<> 
-void elpa_get(const elpa_t handle, const char* name, int* value, int* error) {
+inline void elpa_get(const elpa_t handle, const char* name, int* value, int* error) {
   elpa_get_integer(handle, name, value, error);
 }
 
 template<> 
-void elpa_get(const elpa_t handle, const char* name, double* value, int* error) {
+inline void elpa_get(const elpa_t handle, const char* name, double* value, int* error) {
   elpa_get_double(handle, name, value, error);
 }
 
@@ -57,20 +56,20 @@ void elpa_get(const elpa_t handle, const char* name, double* value, int* error) 
  *  \result void
  */
 template<typename T1, typename T2> 
-void elpa_eigenvectors(const elpa_t handle, T1* a, T2* ev, T1* q, int* error);
+inline void elpa_eigenvectors(const elpa_t handle, T1* a, T2* ev, T1* q, int* error);
 
 template<>
-void elpa_eigenvectors(const elpa_t handle, double* a, double* ev, double* q, int* error) {
+inline void elpa_eigenvectors(const elpa_t handle, double* a, double* ev, double* q, int* error) {
   elpa_eigenvectors_d(handle, a, ev, q, error);
 }
 
 template<>
-void elpa_eigenvectors(const elpa_t handle, float* a, float* ev, float* q, int* error) {
+inline void elpa_eigenvectors(const elpa_t handle, float* a, float* ev, float* q, int* error) {
   elpa_eigenvectors_f(handle, a, ev, q, error);
 }
 
 template<>
-void elpa_eigenvectors(
+inline void elpa_eigenvectors(
   const elpa_t handle, 
   std::complex<double>* a,
   double* ev,
@@ -81,7 +80,7 @@ void elpa_eigenvectors(
 }
 
 template<>
-void elpa_eigenvectors(
+inline void elpa_eigenvectors(
   const elpa_t handle,
   std::complex<float>* a,
   float* ev,
@@ -102,16 +101,16 @@ void elpa_eigenvectors(
  *  \result void
  */
 template<typename T>
-void elpa_skew_eigenvectors(elpa_t handle, T* a, T* ev, T* q, int* error);
+inline void elpa_skew_eigenvectors(elpa_t handle, T* a, T* ev, T* q, int* error);
 
 template<>
-void elpa_skew_eigenvectors(elpa_t handle, double* a, double* ev, double* q, int* error) {
+inline void elpa_skew_eigenvectors(elpa_t handle, double* a, double* ev, double* q, int* error) {
   // [[Potential bug]]: this probably should have been "elpa_skew_eigenvectors_d"
   elpa_eigenvectors_d(handle, a, ev, q, error);
 }
 
 template<>
-void elpa_skew_eigenvectors(elpa_t handle, float* a, float* ev, float* q, int* error) {
+inline void elpa_skew_eigenvectors(elpa_t handle, float* a, float* ev, float* q, int* error) {
   // [[Potential bug]]: this probably should have been "elpa_skew_eigenvectors_f"
   elpa_eigenvectors_f(handle, a, ev, q, error);
 }
@@ -130,7 +129,7 @@ void elpa_skew_eigenvectors(elpa_t handle, float* a, float* ev, float* q, int* e
  *  \result void
  */
 template<typename T1, typename T2>
-void elpa_generalized_eigenvectors(
+inline void elpa_generalized_eigenvectors(
   elpa_t handle, 
   T1* a,
   T1* b,
@@ -140,7 +139,7 @@ void elpa_generalized_eigenvectors(
   int* error);
 
 template<>
-void elpa_generalized_eigenvectors(
+inline void elpa_generalized_eigenvectors(
   elpa_t handle, 
   double* a,
   double* b,
@@ -153,7 +152,7 @@ void elpa_generalized_eigenvectors(
 }
 
 template<>
-void elpa_generalized_eigenvectors(
+inline void elpa_generalized_eigenvectors(
   elpa_t handle, 
   float* a,
   float* b,
@@ -166,7 +165,7 @@ void elpa_generalized_eigenvectors(
 }
 
 template<>
-void elpa_generalized_eigenvectors(
+inline void elpa_generalized_eigenvectors(
   elpa_t handle, 
   std::complex<double>* a,
   std::complex<double>* b,
@@ -179,7 +178,7 @@ void elpa_generalized_eigenvectors(
 }
 
 template<>
-void elpa_generalized_eigenvectors(
+inline void elpa_generalized_eigenvectors(
   elpa_t handle, 
   std::complex<float>* a,
   std::complex<float>* b,
@@ -202,25 +201,25 @@ void elpa_generalized_eigenvectors(
  *  \result void
  */
 template<typename T1, typename T2>
-void elpa_eigenvalues(elpa_t handle, T1* a, T2* ev, int* error);
+inline void elpa_eigenvalues(elpa_t handle, T1* a, T2* ev, int* error);
 
 template<>
-void elpa_eigenvalues(elpa_t handle, double* a, double* ev, int* error) {
+inline void elpa_eigenvalues(elpa_t handle, double* a, double* ev, int* error) {
   elpa_eigenvalues_d(handle, a, ev, error);
 }
 
 template<>
-void elpa_eigenvalues(elpa_t handle, float* a, float* ev, int* error) {
+inline void elpa_eigenvalues(elpa_t handle, float* a, float* ev, int* error) {
   elpa_eigenvalues_f(handle, a, ev, error);
 }
 
 template<>
-void elpa_eigenvalues(elpa_t handle, std::complex<double>* a, double* ev, int* error) {
+inline void elpa_eigenvalues(elpa_t handle, std::complex<double>* a, double* ev, int* error) {
   elpa_eigenvalues_dc(handle, a, ev, error);
 }
 
 template<>
-void elpa_eigenvalues(elpa_t handle, std::complex<float>* a, float* ev, int* error) {
+inline void elpa_eigenvalues(elpa_t handle, std::complex<float>* a, float* ev, int* error) {
   elpa_eigenvalues_fc(handle, a, ev, error);
 }
 
@@ -235,15 +234,15 @@ void elpa_eigenvalues(elpa_t handle, std::complex<float>* a, float* ev, int* err
  *  \result void
  */
 template<typename T>
-void elpa_skew_eigenvalues(elpa_t handle, T* a, T* ev, int* error);
+inline void elpa_skew_eigenvalues(elpa_t handle, T* a, T* ev, int* error);
 
 template<>
-void elpa_skew_eigenvalues(elpa_t handle, double* a, double* ev, int* error) {
+inline void elpa_skew_eigenvalues(elpa_t handle, double* a, double* ev, int* error) {
   elpa_skew_eigenvalues_d(handle, a, ev, error);
 }
 
 template<>
-void elpa_skew_eigenvalues(elpa_t handle, float* a, float* ev, int* error) {
+inline void elpa_skew_eigenvalues(elpa_t handle, float* a, float* ev, int* error) {
   elpa_skew_eigenvalues_f(handle, a, ev, error);
 }
 
@@ -258,25 +257,25 @@ void elpa_skew_eigenvalues(elpa_t handle, float* a, float* ev, int* error) {
  *  \result void
  */
 template<typename T>
-void elpa_cholesky(elpa_t handle, T* a, int* error);
+inline void elpa_cholesky(elpa_t handle, T* a, int* error);
 
 template<>
-void elpa_cholesky(elpa_t handle, double* a, int* error) {
+inline void elpa_cholesky(elpa_t handle, double* a, int* error) {
   elpa_cholesky_d(handle, a, error);
 }
 
 template<>
-void elpa_cholesky(elpa_t handle, float* a, int* error) {
+inline void elpa_cholesky(elpa_t handle, float* a, int* error) {
   elpa_cholesky_f(handle, a, error);
 }
 
 template<>
-void elpa_cholesky(elpa_t handle, std::complex<double>* a, int* error) {
+inline void elpa_cholesky(elpa_t handle, std::complex<double>* a, int* error) {
   elpa_cholesky_dc(handle, a, error);
 }
 
 template<>
-void elpa_cholesky(elpa_t handle, std::complex<float>* a, int* error) {
+inline void elpa_cholesky(elpa_t handle, std::complex<float>* a, int* error) {
   elpa_cholesky_fc(handle, a, error);
 }
 
@@ -299,7 +298,7 @@ void elpa_cholesky(elpa_t handle, std::complex<float>* a, int* error) {
  *  \result void
  */
 template<typename T>
-void elpa_hermitian_multiply(
+inline void elpa_hermitian_multiply(
   elpa_t handle,
   char uplo_a,
   char uplo_c,
@@ -314,7 +313,7 @@ void elpa_hermitian_multiply(
   int* error);
 
 template<>
-void elpa_hermitian_multiply(
+inline void elpa_hermitian_multiply(
   elpa_t handle,
   char uplo_a,
   char uplo_c,
@@ -333,7 +332,7 @@ void elpa_hermitian_multiply(
 }
 
 template<>
-void elpa_hermitian_multiply(
+inline void elpa_hermitian_multiply(
   elpa_t handle,
   char uplo_a,
   char uplo_c,
@@ -352,7 +351,7 @@ void elpa_hermitian_multiply(
 }
 
 template<>
-void elpa_hermitian_multiply(
+inline void elpa_hermitian_multiply(
   elpa_t handle,
   char uplo_a,
   char uplo_c,
@@ -371,7 +370,7 @@ void elpa_hermitian_multiply(
 }
 
 template<>
-void elpa_hermitian_multiply(
+inline void elpa_hermitian_multiply(
   elpa_t handle,
   char uplo_a,
   char uplo_c,
@@ -399,24 +398,24 @@ void elpa_hermitian_multiply(
  *  \result void
  */
 template<typename T>
-void elpa_invert_triangular(elpa_t handle, T* a, int* error);
+inline void elpa_invert_triangular(elpa_t handle, T* a, int* error);
 
 template<>
-void elpa_invert_triangular(elpa_t handle, double* a, int* error) {
+inline void elpa_invert_triangular(elpa_t handle, double* a, int* error) {
   elpa_invert_trm_d(handle, a, error);
 }
 
 template<>
-void elpa_invert_triangular(elpa_t handle, float* a, int* error) {
+inline void elpa_invert_triangular(elpa_t handle, float* a, int* error) {
   elpa_invert_trm_f(handle, a, error);
 }
 
 template<>
-void elpa_invert_triangular(elpa_t handle, std::complex<double>* a, int* error) {
+inline void elpa_invert_triangular(elpa_t handle, std::complex<double>* a, int* error) {
   elpa_invert_trm_dc(handle, a, error);
 }
 
 template<>
-void elpa_invert_triangular(elpa_t handle, std::complex<float>* a, int* error) {
+inline void elpa_invert_triangular(elpa_t handle, std::complex<float>* a, int* error) {
   elpa_invert_trm_fc(handle, a, error);
 }
