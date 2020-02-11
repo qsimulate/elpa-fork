@@ -4,7 +4,7 @@
 #include <climits>
 #include <complex>
 
-#include <elpa_hh/elpa_version.hh>
+#include <elpa/elpa_version.hh>
 
 extern "C" {
   struct elpa_struct;
@@ -14,10 +14,10 @@ extern "C" {
   typedef struct elpa_autotune_struct *elpa_autotune_t;
 }
 
-#include <elpa_hh/elpa_constants.hh>
-#include <elpa_hh/elpa_generated_c_api.hh>
-#include <elpa_hh/elpa_generated.hh>
-#include <elpa_hh/elpa_generic.hh> // C++ template 
+#include <elpa/elpa_constants.hh>
+#include <elpa/elpa_generated_c_api.hh>
+#include <elpa/elpa_generated.hh>
+#include <elpa/elpa_generic.hh> // C++ template 
 
 extern "C" {
   const char *elpa_strerr(int elpa_error);
