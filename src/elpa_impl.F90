@@ -243,6 +243,16 @@ module elpa_impl
 #endif
     end function
 
+    !c> #ifdef __cplusplus
+    !c> #include <complex>
+    !c> using dcomplex = std::complex<double>;
+    !c> using fcomplex = std::complex<float>;
+    !c> extern "C" {
+    !c> #else
+    !c> #include <complex.h>
+    !c> typedef double complex dcomplex;
+    !c> typedef float complex fcomplex;
+    !c> #endif
 #ifdef OPTIONAL_C_ERROR_ARGUMENT
     !c_o> #ifdef OPTIONAL_C_ERROR_ARGUMENT
     !c_o> #define elpa_allocate(...) CONC(elpa_allocate, NARGS(__VA_ARGS__))(__VA_ARGS__)

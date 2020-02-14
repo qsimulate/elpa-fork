@@ -875,6 +875,10 @@ module elpa_api
       call elpa_uninit(error)
     end subroutine
 #endif
+    !> this is the end of the generated file
+    !c_no> #ifdef __cplusplus
+    !c_no> }
+    !c_no> #endif
 
     subroutine elpa_uninit(error)
 #ifdef USE_FORTRAN2008
