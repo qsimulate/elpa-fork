@@ -174,7 +174,7 @@
  void elpa_generalized_eigenvalues_fc(elpa_t handle, fcomplex *a, fcomplex *b, float *ev,
  int is_already_decomposed, int *error);
  void elpa_hermitian_multiply_d(elpa_t handle, char uplo_a, char uplo_c, int ncb, double *a, double *b, int nrows_b, int ncols_b, double *c, int nrows_c, int ncols_c, int *error);
- void elpa_hermitian_multiply_df(elpa_t handle, char uplo_a, char uplo_c, int ncb, float *a, float *b, int nrows_b, int ncols_b, float *c, int nrows_c, int ncols_c, int *error);
+ void elpa_hermitian_multiply_f(elpa_t handle, char uplo_a, char uplo_c, int ncb, float *a, float *b, int nrows_b, int ncols_b, float *c, int nrows_c, int ncols_c, int *error);
  void elpa_hermitian_multiply_dc(elpa_t handle, char uplo_a, char uplo_c, int ncb, dcomplex *a, dcomplex *b, int nrows_b, int ncols_b, dcomplex *c, int nrows_c, int ncols_c, int *error);
  void elpa_hermitian_multiply_fc(elpa_t handle, char uplo_a, char uplo_c, int ncb, fcomplex *a, fcomplex *b, int nrows_b, int ncols_b, fcomplex *c, int nrows_c, int ncols_c, int *error);
  void elpa_cholesky_d(elpa_t handle, double *a, int *error);
