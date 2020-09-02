@@ -16,7 +16,7 @@
 !
 !
 !    More information can be found here:
-!    http://elpa.rzg.mpg.de/
+!    http://elpa.mpcdf.mpg.de/
 !
 !    ELPA is free software: you can redistribute it and/or modify
 !    it under the terms of the version 3 of the license of the
@@ -47,24 +47,24 @@ module pack_unpack_gpu
 
   private
 
-  public pack_row_group_real_gpu_double, unpack_row_group_real_gpu_double, &
-         unpack_and_prepare_row_group_real_gpu_double, compute_hh_dot_products_real_gpu_double, &
+  public pack_row_group_real_gpu_double, &
+         unpack_and_prepare_row_group_real_gpu_double, &
          extract_hh_tau_real_gpu_double
 
-  public pack_row_group_complex_gpu_double, unpack_row_group_complex_gpu_double, &
-         unpack_and_prepare_row_group_complex_gpu_double, compute_hh_dot_products_complex_gpu_double, &
+  public pack_row_group_complex_gpu_double, &
+         unpack_and_prepare_row_group_complex_gpu_double, &
          extract_hh_tau_complex_gpu_double
 
 #ifdef WANT_SINGLE_PRECISION_REAL
-  public pack_row_group_real_gpu_single, unpack_row_group_real_gpu_single, &
-         unpack_and_prepare_row_group_real_gpu_single, compute_hh_dot_products_real_gpu_single, &
+  public pack_row_group_real_gpu_single, &
+         unpack_and_prepare_row_group_real_gpu_single, &
          extract_hh_tau_real_gpu_single
 
 #endif
 
 #ifdef WANT_SINGLE_PRECISION_COMPLEX
-  public pack_row_group_complex_gpu_single, unpack_row_group_complex_gpu_single, &
-         unpack_and_prepare_row_group_complex_gpu_single, compute_hh_dot_products_complex_gpu_single, &
+  public pack_row_group_complex_gpu_single, &
+         unpack_and_prepare_row_group_complex_gpu_single, &
          extract_hh_tau_complex_gpu_single
 #endif
   contains

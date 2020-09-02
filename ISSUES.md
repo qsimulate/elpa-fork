@@ -1,7 +1,10 @@
 ## A list of known (and hopefully soon solved) issues of *ELPA* ##
 
-For more details and recent updates please visit the online [issue system] (https://gitlab.mpcdf.mpg.de/elpa/elpa/issues)
+For more details and recent updates please visit the online [issue system](https://gitlab.mpcdf.mpg.de/elpa/elpa/issues)
 Issues which are not mentioned in a newer release are (considered as) solved.
+
+### ELPA 2020.05.001 release ###
+- fixes a problem with configuring the GPU kernels
 
 ### ELPA 2019.11.001 release ###
 - memory leak in in GPU version has been fixed
@@ -31,7 +34,7 @@ Issues which are not mentioned in a newer release are (considered as) solved.
 - at the moment no issues are known
 
 ### ELPA 2017.05.001 release ###
-- accidently a memory leak has been introduced
+- accidentaly a memory leak has been introduced
 
 ### ELPA 2017.05.001.rc2 release ###
 - compilation with Intel Compiler 2018 beta does not work
@@ -55,6 +58,6 @@ Issues which are not mentioned in a newer release are (considered as) solved.
 ### ELPA 2016.05.001 release  ###
 
 - QR decomposition fails for certain combinations of matrix sizes, number of eigenvalues to compute and block size
-- The generated check-scripts (in the step "make check") do not call the binary with "mpiexec" when *ELPA* is build with
+- The generated check-scripts (in the step "make check") do not call the binary with `mpiexec` when *ELPA* is build with
   MPI
 

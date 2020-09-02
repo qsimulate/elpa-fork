@@ -2,19 +2,14 @@
 
 ## Current Release ##
 
-The current release is ELPA 2019.11.001 The current supported API version
+The current release is ELPA 2020.05.001 The current supported API version
 is 20190501. This release supports the earliest API version 20170403.
-
-The old, obsolete legacy API will be deprecated in the future !
-Allready now, all new features of ELPA are only available with the new API. Thus, there
-is no reason to keep the legacy API arround for too long.
 
 The release ELPA 2018.11.001 was the last release, where the legacy API has been
 enabled by default (and can be disabled at build time).
 With release ELPA 2019.05.001 the legacy API is disabled by default, however,
 can be still switched on at build time.
-With the release ELPA 2019.11.001 the legacy API will be deprecated and
-not supported anymore.
+With the release ELPA 2019.11.001 the legacy API has been deprecated and support has been droped.
 
 [![Build 
 status](https://gitlab.mpcdf.mpg.de/elpa/elpa/badges/master/build.svg)](https://gitlab.mpcdf.mpg.de/elpa/elpa/commits/master)
@@ -81,7 +76,7 @@ Nonetheless, we are grateful if you cite the following publications:
   If you use ELPA in general:
 
   T. Auckenthaler, V. Blum, H.-J. Bungartz, T. Huckle, R. Johanni,
-  L. Kr\"amer, B. Lang, H. Lederer, and P. R. Willems,
+  L. Krämer, B. Lang, H. Lederer, and P. R. Willems,
   "Parallel solution of partial symmetric eigenvalue problems from
   electronic structure calculations",
   Parallel Computing 37, 783-794 (2011).
@@ -102,6 +97,10 @@ Nonetheless, we are grateful if you cite the following publications:
   Numerical Mathematics and Advanced Applications ENUMATH 2017. ENUMATH 2017. 
   Lecture Notes in Computational Science and Engineering, vol 126. Springer, Cham
   
+  Yu, V.; Moussa, J.; Kus, P.; Marek, A.; Messmer, P.; Yoon, M.; Lederer, H.; Blum, V.
+  "GPU-Acceleration of the ELPA2 Distributed Eigensolver for Dense Symmetric and Hermitian Eigenproblems",
+  https://arxiv.org/abs/2002.10991
+
   If you use the new API and/or autotuning:
  
   Kus, P.; Marek, A.; Koecher, S. S.; Kowalski H.-H.; Carbogno, Ch.; Scheurer, Ch.; Reuter, K.; Scheffler, M.; Lederer, H.
@@ -131,8 +130,7 @@ the possible configure options.
 
 ## Using *ELPA*
 
-Please have a look at the [USERS_GUIDE](USERS_GUIDE.md) file, to get a documentation or at the [online](http://elpa.mpcdf.mpg.de/html/Documentation/ELPA-2019.11.001/html/index.html) doxygen
-documentation, where you find the definition of the interfaces.
+Please have a look at the [USERS_GUIDE](USERS_GUIDE.md) file, to get a documentation or at the [online](http://elpa.mpcdf.mpg.de/html/Documentation/ELPA-2020.05.001/html/index.html) doxygen documentation, where you find the definition of the interfaces.
 
 ## Contributing to *ELPA*
 
